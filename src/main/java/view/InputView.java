@@ -34,6 +34,7 @@ public class InputView {
         try {
             System.out.print(Message.INPUT_WEEKDAY_WORKER.message);
             List<String> weekdayWorker = List.of(Console.readLine().split(COMMA));
+            WorkerValidator.checkSize(weekdayWorker);
             return weekdayWorker;
         } catch (IllegalArgumentException exception) {
             printExceptionMessage(exception);
