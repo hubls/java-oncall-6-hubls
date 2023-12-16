@@ -36,6 +36,7 @@ public class InputView {
             List<String> weekdayWorker = List.of(Console.readLine().split(COMMA));
             WorkerValidator.checkSize(weekdayWorker);
             weekdayWorker.forEach(nickName -> WorkerValidator.checkNickName(nickName));
+            WorkerValidator.checkDuplicateNickName(weekdayWorker);
             return weekdayWorker;
         } catch (IllegalArgumentException exception) {
             printExceptionMessage(exception);
