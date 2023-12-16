@@ -14,6 +14,7 @@ public class MonthAndDayValidator {
         String month = monthAndDay.get(MONTH);
         String day = monthAndDay.get(DAY);
         checkMonth(month);
+        checkDay(day);
     }
 
     public static void checkSize(List<String> monthAndDay) throws IllegalArgumentException {
@@ -24,6 +25,12 @@ public class MonthAndDayValidator {
 
     private static void checkMonth(String month) {
         if (!month.matches("^(1[0-2]|[1-9])$")) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_VALUE.getMessage());
+        }
+    }
+
+    private static void checkDay(String day) {
+        if (!day.matches("^(월|화|수|목|금|토|일)$")) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_VALUE.getMessage());
         }
     }
