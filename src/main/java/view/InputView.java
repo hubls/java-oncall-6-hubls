@@ -31,34 +31,24 @@ public class InputView {
     }
 
     public List<String> readWeekdayWorker() {
-        try {
-            System.out.print(Message.INPUT_WEEKDAY_WORKER.message);
-            List<String> weekdayWorker = List.of(Console.readLine().split(COMMA));
-            WorkerValidator.checkSize(weekdayWorker);
-            weekdayWorker.forEach(nickName -> WorkerValidator.checkNickName(nickName));
-            WorkerValidator.checkDuplicateNickName(weekdayWorker);
-            return weekdayWorker;
-        } catch (IllegalArgumentException exception) {
-            printExceptionMessage(exception);
-            return readWeekdayWorker();
-        }
+        System.out.print(Message.INPUT_WEEKDAY_WORKER.message);
+        List<String> weekdayWorker = List.of(Console.readLine().split(COMMA));
+        WorkerValidator.checkSize(weekdayWorker);
+        weekdayWorker.forEach(nickName -> WorkerValidator.checkNickName(nickName));
+        WorkerValidator.checkDuplicateNickName(weekdayWorker);
+        return weekdayWorker;
     }
 
     public List<String> readHolidayWorker() {
-        try {
-            System.out.print(Message.INPUT_HOLIDAY_WORKER.message);
-            List<String> holidayWorker = List.of(Console.readLine().split(COMMA));
-            WorkerValidator.checkSize(holidayWorker);
-            holidayWorker.forEach(nickName -> WorkerValidator.checkNickName(nickName));
-            WorkerValidator.checkDuplicateNickName(holidayWorker);
-            return holidayWorker;
-        } catch (IllegalArgumentException exception) {
-            printExceptionMessage(exception);
-            return readWeekdayWorker();
-        }
+        System.out.print(Message.INPUT_HOLIDAY_WORKER.message);
+        List<String> holidayWorker = List.of(Console.readLine().split(COMMA));
+        WorkerValidator.checkSize(holidayWorker);
+        holidayWorker.forEach(nickName -> WorkerValidator.checkNickName(nickName));
+        WorkerValidator.checkDuplicateNickName(holidayWorker);
+        return holidayWorker;
     }
 
-    private void printExceptionMessage(Exception exception) {
+    public void printExceptionMessage(Exception exception) {
         System.out.println(exception.getMessage());
     }
 

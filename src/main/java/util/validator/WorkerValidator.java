@@ -35,4 +35,13 @@ public class WorkerValidator {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_VALUE.getMessage());
         }
     }
+
+    public static void checkWeekdayHolidayWorker(List<String> weekdayWorker, List<String> holidayWorker) {
+        Set<String> weekdayWorkerAsSet = new HashSet<>(weekdayWorker);
+        Set<String> holidayWorkerAsSet = new HashSet<>(holidayWorker);
+
+        if (!weekdayWorkerAsSet.equals(holidayWorkerAsSet)) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_VALUE.getMessage());
+        }
+    }
 }
