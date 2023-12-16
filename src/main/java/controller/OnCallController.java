@@ -22,7 +22,8 @@ public class OnCallController {
         List<String> monthAndDay = inputView.readMonthAndDay();
         readWorker();
         WorkSchedule workSchedule = new WorkSchedule();
-        List<String> schedule = workSchedule.createSchedule(monthAndDay.get(0), monthAndDay.get(1), weekdayWorker, holidayWorker);
+        workSchedule.createSchedule(monthAndDay.get(0), monthAndDay.get(1), weekdayWorker, holidayWorker);
+        List<String> schedule = workSchedule.getOnCallSchedule();
         outputView.printSchedule(schedule);
     }
 

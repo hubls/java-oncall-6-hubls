@@ -6,7 +6,7 @@ public class WorkSchedule {
     private final List<String> onCallSchedule = new ArrayList<>();
     private final List<String> workers = new ArrayList<>();
 
-    public List<String> createSchedule(String month, String startDay, List<String> weekdayWorkers, List<String> holidayWorkers) {
+    public void createSchedule(String month, String startDay, List<String> weekdayWorkers, List<String> holidayWorkers) {
         int daysInMonth = Month.getDaysForMonth(month);
         int weekdayWorkerIndex = 0;
         int holidayWorkerIndex = 0;
@@ -25,6 +25,9 @@ public class WorkSchedule {
             dayOfWeek = getHolidayOfWeek(dayOfWeek, month, day);
             onCallSchedule.add(String.format("%s월 %d일 %s %s", month, day, dayOfWeek, worker));
         }
+    }
+
+    public List<String> getOnCallSchedule() {
         return onCallSchedule;
     }
 
@@ -55,15 +58,5 @@ public class WorkSchedule {
         }
 
         return daysOfWeek.get(day % 7);
-    }
-
-    public static void main(String[] args) {
-        // 근무자 목록
-        List<String> weekdayWorkers = Arrays.asList("준팍", "도밥", "고니", "수아", "루루", "글로", "솔로스타", "우코", "슬링키", "참새", "도리");
-        List<String> holidayWorkers = Arrays.asList("수아", "루루", "글로", "솔로스타", "우코", "슬링키", "참새", "도리", "준팍", "도밥", "고니");
-
-        WorkSchedule workSchedule = new WorkSchedule();
-        // 5월의 일정 생성
-        System.out.println(workSchedule.createSchedule("12", "월", weekdayWorkers, holidayWorkers));
     }
 }
