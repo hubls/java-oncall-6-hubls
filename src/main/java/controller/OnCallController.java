@@ -3,6 +3,8 @@ package controller;
 import view.InputView;
 import view.OutputView;
 
+import java.util.List;
+
 public class OnCallController {
     private final InputView inputView;
     private final OutputView outputView;
@@ -13,6 +15,7 @@ public class OnCallController {
     }
 
     public void run() {
-        inputView.readMonthAndDay();
+        List<String> monthAndDay = inputView.readMonthAndDay();
+        List<String> weekdayWorker = inputView.readWeekdayWorker();
     }
 }
