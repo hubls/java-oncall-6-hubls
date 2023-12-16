@@ -1,5 +1,6 @@
 package controller;
 
+import domain.WorkSchedule;
 import util.validator.WorkerValidator;
 import view.InputView;
 import view.OutputView;
@@ -20,6 +21,9 @@ public class OnCallController {
     public void run() {
         List<String> monthAndDay = inputView.readMonthAndDay();
         readWorker();
+        WorkSchedule workSchedule = new WorkSchedule();
+        List<String> schedule = workSchedule.createSchedule(monthAndDay.get(0), monthAndDay.get(1), weekdayWorker, holidayWorker);
+        outputView.printSchedule(schedule);
     }
 
     private void readWorker() {
@@ -27,6 +31,7 @@ public class OnCallController {
             weekdayWorker = inputView.readWeekdayWorker();
             holidayWorker = inputView.readHolidayWorker();
             WorkerValidator.checkWeekdayHolidayWorker(weekdayWorker, holidayWorker);
+            System.out.println();
         } catch (Exception exception) {
             inputView.printExceptionMessage(exception);
             readWorker();
