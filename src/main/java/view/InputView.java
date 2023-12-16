@@ -1,6 +1,7 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
+import util.validator.MonthAndDayValidator;
 
 import java.util.List;
 
@@ -19,6 +20,8 @@ public class InputView {
         try {
             System.out.print(Message.INPUT_MONTH_DAY.message);
             List<String> monthAndDay = List.of(Console.readLine().split(COMMA));
+            MonthAndDayValidator.checkSize(monthAndDay);
+            MonthAndDayValidator.validate(monthAndDay);
             return monthAndDay;
         } catch (IllegalArgumentException exception) {
             printExceptionMessage(exception);
