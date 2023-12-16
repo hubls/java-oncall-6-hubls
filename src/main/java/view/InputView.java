@@ -44,13 +44,29 @@ public class InputView {
         }
     }
 
+    public List<String> readHolidayWorker() {
+        try {
+            System.out.print(Message.INPUT_HOLIDAY_WORKER.message);
+            List<String> holidayWorker = List.of(Console.readLine().split(COMMA));
+            WorkerValidator.checkSize(holidayWorker);
+            holidayWorker.forEach(nickName -> WorkerValidator.checkNickName(nickName));
+            WorkerValidator.checkDuplicateNickName(holidayWorker);
+            return holidayWorker;
+        } catch (IllegalArgumentException exception) {
+            printExceptionMessage(exception);
+            return readWeekdayWorker();
+        }
+    }
+
     private void printExceptionMessage(Exception exception) {
         System.out.println(exception.getMessage());
     }
 
     private enum Message {
         INPUT_MONTH_DAY("비상 근무를 배정할 월과 시작 요일을 입력하세요> "),
-        INPUT_WEEKDAY_WORKER("평일 비상 근무 순번대로 사원 닉네임을 입력하세요> ");
+        INPUT_WEEKDAY_WORKER("평일 비상 근무 순번대로 사원 닉네임을 입력하세요> "),
+        INPUT_HOLIDAY_WORKER("휴일 비상 근무 순번대로 사원 닉네임을 입력하세요> ");
+
 
         private final String message;
 

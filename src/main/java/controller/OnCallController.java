@@ -17,5 +17,6 @@ public class OnCallController {
     public void run() {
         List<String> monthAndDay = inputView.readMonthAndDay();
         List<String> weekdayWorker = inputView.readWeekdayWorker();
+        List<String> holidayWorker = inputView.readHolidayWorker();
     }
 }
